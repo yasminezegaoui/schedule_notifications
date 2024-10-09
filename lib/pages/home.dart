@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
             SizedBox(height: 20,),
             ElevatedButton(
               onPressed: (){
-                NotificationService.showInstanctNotification(
+                NotificationService.showInstantNotification(
                   'Flutter Notification', 
                   'This shows an instance notificaton'
                 );

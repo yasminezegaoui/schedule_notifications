@@ -37,7 +37,7 @@ class NotificationService {
   }
 
   // show on instant Notification
-  static Future<void> showInstanctNotification(String title, String body) async{
+  static Future<void> showInstantNotification(String title, String body) async{
     // Define notification details
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: AndroidNotificationDetails(
