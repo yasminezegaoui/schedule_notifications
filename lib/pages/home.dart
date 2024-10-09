@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
 import 'package:flutter/material.dart';
+import 'package:scheduled_notifications/notification/notification_service.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,7 +13,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   TimeOfDay _timeOfDay = TimeOfDay.now();
 
-  void _selectTime(){
+  void _selectTimeAndScheduleNotification(){
     showTimePicker(
       context: context, 
       initialTime: TimeOfDay.now(),
@@ -20,6 +21,21 @@ class _HomeState extends State<Home> {
       setState(() {
         _timeOfDay = value!;
       });
+      
+      DateTime scheduleTime = DateTime(
+        // DateTime.now().year,
+        // DateTime.now().month,
+        // DateTime.now().day,
+        _timeOfDay.hour,
+        _timeOfDay.minute,
+      );
+
+      NotificationService.scheduleNotification(
+        'Scheduled Notification', 
+        'GO COMPLETE YOUR DEV DEPARTEMENT MOBILE CHALLENGES', 
+        scheduleTime
+      );
+
     });
   }
 
@@ -45,14 +61,39 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(height: 20,),
             ElevatedButton(
-              onPressed: _selectTime,
+              onPressed: (){
+                NotificationService.showInstanctNotification(
+                  'Flutter Notification', 
+                  'This shows an instance notificaton'
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurple.withOpacity(.4)
               ), 
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Text(
-                  'Pick a time',
+                  'Show Notification',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.w500
+                  ),
+                ),
+              )
+            ),
+            SizedBox(height: 20,),
+            ElevatedButton(
+              onPressed: (){
+                _selectTimeAndScheduleNotification;
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple.withOpacity(.4)
+              ), 
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Text(
+                  'Schedule Notification',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 26,
