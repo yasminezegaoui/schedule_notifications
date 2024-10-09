@@ -23,9 +23,9 @@ class _HomeState extends State<Home> {
       });
       
       DateTime scheduleTime = DateTime(
-        // DateTime.now().year,
-        // DateTime.now().month,
-        // DateTime.now().day,
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
         _timeOfDay.hour,
         _timeOfDay.minute,
       );
@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
                   'Show Notification',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 26,
+                    fontSize: 20,
                     fontWeight: FontWeight.w500
                   ),
                 ),
@@ -85,7 +85,7 @@ class _HomeState extends State<Home> {
             SizedBox(height: 20,),
             ElevatedButton(
               onPressed: (){
-                _selectTimeAndScheduleNotification;
+                _selectTimeAndScheduleNotification();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurple.withOpacity(.4)
@@ -96,7 +96,7 @@ class _HomeState extends State<Home> {
                   'Schedule Notification',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 26,
+                    fontSize: 20,
                     fontWeight: FontWeight.w500
                   ),
                 ),
